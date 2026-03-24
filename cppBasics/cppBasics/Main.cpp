@@ -17,6 +17,15 @@ enum ElementType
 	Electric = 4,
 	None = -1
 };
+string GetElementName(ElementType type)
+{
+	if (type == Fire) return "불";
+	if (type == Water) return "물";
+	if (type == Wind) return "바람";
+	if (type == Earth) return "대지";
+	if (type == Electric) return "전기";
+	return "알 수 없음";
+}
 int PlayRockPaperScissors(ElementType playerChoice, ElementType computerChoice)
 {
 	int score = 0;
@@ -60,17 +69,13 @@ int GetPlayerType()
 		cout << "속성을 선택하세요 (0:불 1:물 2:바람 3:대지 4:전기): ";
 		cin >> n;
 
-		switch (n)
+		if (n >= 0 && n <= 4) 
 		{
-		case 0: cout << "플레이어가 불 속성 선택!"    << endl; return n;
-		case 1: cout << "플레이어가 물 속성 선택!"    << endl; return n;
-		case 2: cout << "플레이어가 바람 속성 선택!" << endl; return n;
-		case 3: cout << "플레이어가 대지 속성 선택!" << endl; return n;
-		case 4: cout << "플레이어가 전기 속성 선택!" << endl; return n;
-		default:
-			cout << "잘못된 입력입니다. 0에서 4 사이의 숫자를 입력하세요..." << endl;
-			break; 
+			cout << "선택 완료: " << GetElementName(static_cast<ElementType>(n)) << endl;
+			return n;
 		}
+		cout << "잘못된 입력입니다. 0~4 사이를 입력하세요." << endl;
+		
 	}
 }
 void PlayGame(int rounds)
