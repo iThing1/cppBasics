@@ -88,22 +88,12 @@ void PlayGame(int rounds)
 		ElementType playerChoice = static_cast<ElementType>(GetPlayerType());
 		ElementType computerChoice = static_cast<ElementType>(rand() % 5);
 		cout << "=> 컴퓨터가 속성 선택 중..." << endl; Sleep(1000);
-		// 선택된 속성 문자열로 변환
-		string playerElement = 
-			(playerChoice == Fire) ? "불" :
-		    (playerChoice == Water) ? "물" :
-			(playerChoice == Wind) ? "바람" :
-			(playerChoice == Earth) ? "대지" :
-			(playerChoice == Electric) ? "전기" : "알 수 없음";
-		string computerElement =				
-			(computerChoice == Fire) ? "불" :
-			(computerChoice == Water) ? "물" :
-			(computerChoice == Wind) ? "바람" :
-			(computerChoice == Earth) ? "대지" :
-			(computerChoice == Electric) ? "전기" : "알 수 없음";
+		for (int j = 0; j < 3; j++) { Sleep(300); cout << "."; }
+		cout << endl;
 
-		cout << "  [플레이어] vs " << "[컴퓨터]  " << endl;
-		cout << "     " << playerElement << "         " << computerElement << "   " << endl;
+		// 선택된 속성 문자열로 변환
+		cout << "[플레이어: " << GetElementName(playerChoice) << "] vs ";
+		cout << "[컴퓨터: " << GetElementName(computerChoice) << "]" << endl;
 		
 		int result = PlayRockPaperScissors(playerChoice, computerChoice);
 		Sleep(500);
