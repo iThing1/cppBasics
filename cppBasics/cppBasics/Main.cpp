@@ -18,7 +18,8 @@ enum ElementType
 	Water = 1,
 	Wind = 2,
 	Earth = 3,
-	Electric = 4
+	Electric = 4,
+	None = -1
 };
 int PlayRockPaperScissors(ElementType playerChoice, ElementType computerChoice)
 {
@@ -55,7 +56,27 @@ int PlayRockPaperScissors(ElementType playerChoice, ElementType computerChoice)
 	}
 	return score;
 }
+int GetPlayerType()
+{
+	int n = 0;
+	while (true)
+	{
+		cout << "속성을 선택하세요 (0:불 1:물 2:바람 3:대지 4:전기): ";
+		cin >> n;
 
+		switch (n)
+		{
+		case 0: cout << "플레이어가 불 속성을 선택했습니다."    << endl; return n;
+		case 1: cout << "플레이어가 물 속성을 선택했습니다."    << endl; return n;
+		case 2: cout << "플레이어가 바람 속성을 선택했습니다." << endl; return n;
+		case 3: cout << "플레이어가 대지 속성을 선택했습니다." << endl; return n;
+		case 4: cout << "플레이어가 전기 속성을 선택했습니다." << endl; return n;
+		default:
+			cout << "잘못된 입력입니다. 0에서 4 사이의 숫자를 입력하세요." << endl;
+			break; 
+		}
+	}
+}
 int main()
 {
 	
