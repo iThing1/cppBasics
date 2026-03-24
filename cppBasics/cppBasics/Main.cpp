@@ -12,6 +12,11 @@
 // 8. 라운드 수만큼 반복한다. 1라운드마다 승패를 출력하고 기록한다.
 // 9. 게임이 끝난 후, 기록된 플레이어의 승리 횟수, 패배 횟수, 무승부 정보와 점수를 출력한다.
 using namespace std;
+
+// 승무패 기록과 점수 합산을 위한 전역 변수
+int wins = 0;
+int losses = 0;
+int draws = 0;
 enum ElementType
 {
 	Fire = 0,
@@ -77,19 +82,8 @@ int GetPlayerType()
 		}
 	}
 }
-int main()
+void PlayGame(int rounds)
 {
-	// 승무패 기록과 점수 합산을 위한 변수들
-	int wins = 0;
-	int losses = 0;
-	int draws = 0;
-	int totalScore = 0;
-	// 게임 라운드 수 입력받기
-	int rounds = 0;
-	cout << "게임 라운드 수를 입력하세요." << endl;
-	cin >> rounds;
-
-	// 라운드마다 새로 선택해야하므로 반복문 안에서 처리
 	for (int i = 0; i < rounds; i++)
 	{
 		cout << "라운드 " << (i + 1) << " 시작!" << endl;
@@ -102,16 +96,32 @@ int main()
 		else if (result == 0) losses++;
 		else draws++;
 	}
-	
+}
+
+void PrintResult()
+{
 	// 게임 결과 출력
-	totalScore = wins * 3 + draws * 1; // 승리 3점, 무승부 1점
+	int totalScore = wins * 3 + draws * 1; // 승리 3점, 무승부 1점
 	system("cls");
 	cout << "=======게임 종료!=======" << endl;
+	cout << "라운드 진행 횟수: " << wins + losses + draws << endl;
 	cout << "승리 횟수: " << wins << endl;
 	cout << "패배 횟수: " << losses << endl;
 	cout << "무승부 횟수: " << draws << endl;
 	cout << "========================" << endl;
 	cout << "최종 점수: " << totalScore << endl;
-	
+
+}
+
+int main()
+{
+	// 게임 라운드 수 입력받기
+	int rounds = 0;
+	cout << "게임 라운드 수를 입력하세요." << endl;
+	cin >> rounds;
+
+	PlayGame(rounds);
+	PrintResult();
+
 	return 0;
 }
