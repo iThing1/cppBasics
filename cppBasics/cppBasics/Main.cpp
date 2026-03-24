@@ -79,7 +79,30 @@ int GetPlayerType()
 }
 int main()
 {
-	
+	// 승무패 기록과 점수 합산을 위한 변수들
+	int wins = 0;
+	int losses = 0;
+	int draws = 0;
+	int totalScore = 0;
+	// 게임 라운드 수 입력받기
+	int rounds = 0;
+	cout << "게임 라운드 수를 입력하세요." << endl;
+	cin >> rounds;
+
+	// 라운드마다 새로 선택해야하므로 반복문 안에서 처리
+	for (int i = 0; i < rounds; i++)
+	{
+		cout << "라운드 " << (i + 1) << " 시작!" << endl;
+		// 플레이어/컴퓨터의 캐릭터 속성 선택
+		ElementType playerChoice = static_cast<ElementType>(GetPlayerType());
+		ElementType computerChoice = static_cast<ElementType>(rand() % 5);
+
+		int result = PlayRockPaperScissors(playerChoice, computerChoice);
+		if (result == 3) wins++;
+		else if (result == 0) losses++;
+		else draws++;
+	}
+
 
 	return 0;
 }
