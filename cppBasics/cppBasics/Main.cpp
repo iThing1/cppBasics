@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-
+#include <Windows.h>
 // 과제4: 간단한 텍스트 게임 만들기
 // 주제 : 각 원소별 상성 시스템 구현
 // 1. 플레이어는 5개의 속성(불, 물, 바람, 대지, 전기)을 가진 캐릭터를 선택하여 게임을 진행한다.
@@ -93,7 +93,7 @@ int main()
 	for (int i = 0; i < rounds; i++)
 	{
 		cout << "라운드 " << (i + 1) << " 시작!" << endl;
-		// 플레이어/컴퓨터의 캐릭터 속성 선택
+		// 플레이어/컴퓨터의 캐릭터 속성 선택(int -> ElementType 형변환)
 		ElementType playerChoice = static_cast<ElementType>(GetPlayerType());
 		ElementType computerChoice = static_cast<ElementType>(rand() % 5);
 
@@ -102,7 +102,16 @@ int main()
 		else if (result == 0) losses++;
 		else draws++;
 	}
-
-
+	
+	// 게임 결과 출력
+	totalScore = wins * 3 + draws * 1; // 승리 3점, 무승부 1점
+	system("cls");
+	cout << "=======게임 종료!=======" << endl;
+	cout << "승리 횟수: " << wins << endl;
+	cout << "패배 횟수: " << losses << endl;
+	cout << "무승부 횟수: " << draws << endl;
+	cout << "========================" << endl;
+	cout << "최종 점수: " << totalScore << endl;
+	
 	return 0;
 }
