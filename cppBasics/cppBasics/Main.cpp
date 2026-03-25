@@ -74,6 +74,7 @@ void PrintGameOver()
 
 void PlayGame()
 {
+	GenerateMap();
 	int playerX = -1;
 	int playerY = -1;
 	while (true)
@@ -124,7 +125,7 @@ void PlayGame()
 int main()
 {
 	srand(static_cast<unsigned int>(time(NULL)));
-	GenerateMap();
+	
 	PlayGame();
 
 	return 0;
