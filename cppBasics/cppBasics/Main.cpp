@@ -5,6 +5,7 @@ using namespace std;
 const int MAP_SIZE_X = 10;
 const int MAP_SIZE_Y = 10;
 const int MAX_ITEMS = 3;
+const int MAX_MONSTERS = 5;
 
 void GenerateMap(int Map[MAP_SIZE_X][MAP_SIZE_Y])
 {
@@ -22,6 +23,17 @@ void GenerateMap(int Map[MAP_SIZE_X][MAP_SIZE_Y])
 		int x = rand() % MAP_SIZE_X;
 		int y = rand() % MAP_SIZE_Y;
 		Map[x][y] = 1;
+	}
+	int monsterCount = rand() % MAX_MONSTERS;
+	for (int i = 0; i < monsterCount;)
+	{
+		int x = rand() % MAP_SIZE_X;
+		int y = rand() % MAP_SIZE_Y;
+		if (Map[x][y] == 0)
+		{
+			Map[x][y] = 2;
+			i++;
+		}
 	}
 }
 
