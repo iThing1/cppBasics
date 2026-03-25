@@ -7,7 +7,9 @@ const int MAP_SIZE_Y = 10;
 const int MAX_ITEMS = 3;
 const int MAX_MONSTERS = 5;
 
-void GenerateMap(int Map[MAP_SIZE_X][MAP_SIZE_Y])
+int Map[MAP_SIZE_X][MAP_SIZE_Y] = { 0 };
+
+void GenerateMap()
 {
 	for (int i = 0; i < MAP_SIZE_X; i++)
 	{
@@ -37,7 +39,7 @@ void GenerateMap(int Map[MAP_SIZE_X][MAP_SIZE_Y])
 	}
 }
 
-void PrintMap(int Map[MAP_SIZE_X][MAP_SIZE_Y])
+void PrintMap()
 {
 	for (int i = 0; i < MAP_SIZE_X; i++)
 	{
@@ -55,10 +57,9 @@ void PrintMap(int Map[MAP_SIZE_X][MAP_SIZE_Y])
 int main()
 {	
 	srand(static_cast<unsigned int>(time(NULL)));
-	int Map[MAP_SIZE_X][MAP_SIZE_Y] = { 0 };
 	
-	GenerateMap(Map);
-	PrintMap(Map);
+	GenerateMap();
+	PrintMap();
 
 	return 0;
 }
