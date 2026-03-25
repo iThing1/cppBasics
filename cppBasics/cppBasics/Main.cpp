@@ -18,7 +18,9 @@ int main()
 		}
 	}
 
-	for (int i = 0; i < MAX_ITEMS; i++)
+	int itemCount = rand() % MAX_ITEMS;
+	if (itemCount == 0) itemCount = 1;
+	for (int i = 0; i < itemCount; i++)
 	{
 		int x = rand() % MAP_SIZE_X;
 		int y = rand() % MAP_SIZE_Y;
