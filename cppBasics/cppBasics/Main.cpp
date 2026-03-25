@@ -56,13 +56,20 @@ void PrintMap()
 	}
 }
 
+void PrintVictory()
+{
+	system("cls");
+	cout << "======================" << endl;
+	cout << "      Victory!       " << endl;
+	cout << "======================" << endl;
+}
+
 void PrintGameOver()
 {
 	system("cls");
 	cout << "======================" << endl;
 	cout << "      Game Over      " << endl;
 	cout << "======================" << endl;
-	cin.get();
 }
 
 void PlayGame()
@@ -90,6 +97,8 @@ void PlayGame()
 		if (map[playerX][playerY] == 1)
 		{
 			cout << "보물을 획득했습니다!!!" << endl;
+			Sleep(800);
+			PrintVictory();
 			break;
 		}
 		else if (map[playerX][playerY] == 2)
