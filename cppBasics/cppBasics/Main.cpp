@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <Windows.h>
 #include <conio.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -151,6 +152,7 @@ void PrintResult()
 
 int main()
 {
+	srand(static_cast<unsigned int>(time(NULL)));
 	ShowTitleScreen();
 	system("cls");
 
